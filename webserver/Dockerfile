@@ -3,6 +3,6 @@ WORKDIR /go/src/webserver
 COPY main.go ./
 RUN CGO_ENABLED=0 go install
 
-FROM registry.redhat.io/ubi8/ubi-minimal:latest
+FROM scratch
 COPY --from=builder /go/bin/webserver /webserver
 CMD ["/webserver"]
